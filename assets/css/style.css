@@ -1,0 +1,655 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+}
+body {
+    width: 100%;
+    margin: auto;
+}
+header {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding: 0 20px;
+}
+header .logo {
+    width: 300px;
+}
+header .logo a {
+    text-decoration: none;
+    color: #333;
+    font-size: 25px;
+    font-weight: bold;
+}
+header .logo a:hover {
+    color: #188aff;
+}
+
+header .input-search {
+    display: flex;
+    background-color: inherit;
+    box-shadow: 2px 2px 2px 1px grey;
+    border-radius: 8px;
+    transition: all 0.3s linear;
+    height: 40px;
+    width: 500px;
+    align-items: center;
+    padding-left: 5px;
+    overflow: hidden;
+}
+header .input-search.active {
+    border: 3px solid #188aff;
+}
+.input-search .search-img  {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-right: 5px;
+    border: none;
+    background-color: inherit;
+    outline: 0;
+}
+.input-search .search-img i {
+    font-size: 20px;
+}
+.input-search .search-img:hover {
+    background-color: #ccc;
+}
+.input-search input {
+    border: none;
+    flex: 1;
+    height: inherit;
+    outline: none;
+    font-size: 17px;
+}
+.input-search .search-limpar {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: none;
+    background-color: inherit;
+    display: none;
+    outline: none;
+}
+.input-search .search-limpar i {
+    font-size: 20px;
+}
+.input-search .search-limpar:hover {
+    background-color: #ccc;
+}
+
+.container {
+    max-width: 1280px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+.container input[type="checkbox"] {
+    display: none;
+}
+#btn-aside {
+    position: absolute;
+    font-size: 45px;
+    z-index: 2;
+    top: 70px;
+    left: 3px;
+    display: none;
+}
+aside {
+    height: calc(100vh - 75px);
+    width: 330px;
+    margin-top: 5px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+aside ul {
+    display: flex;
+    flex-direction: column;
+}
+aside label {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+aside label #btn-aside-close {
+    padding-right: 10px;
+    padding-top: 2px;
+    font-size: 28px;
+    display: none;
+}
+aside ul li {
+    position: relative;
+    list-style: none;
+}
+aside ul li::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+aside ul li:hover::before {
+    background-color: #188aff;
+}
+aside ul li a {
+    text-decoration: none;
+    display: flex;
+}
+aside ul li a .icon {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    font-size: 28px;
+    overflow: hidden;
+}
+aside ul li a .icon .fa {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    color: #333;
+    transition: 0.5s;
+}
+aside ul li a .icon .fa:last-child {
+    color: #188aff;
+}
+aside ul li a:hover .icon .fa {
+    transform: translateY(-100%);
+}
+aside ul li a:hover .icon .fa:last-child {
+    transform: translateY(-100%)
+}
+aside ul li a .name {
+    position: relative;
+    top: 20px;
+    height: 20px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+aside ul li a .name span {
+    display: block;
+    position: relative;
+    color: #333;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    transition: 0.5s;
+}
+aside ul li a .name span::before {
+    content: attr(data-text);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #188aff;
+}
+aside ul li a:hover .name span {
+    transform: translateY(20px);
+}
+
+
+aside ul .action a .icon .fa {
+    color: #188aff;
+}
+aside ul .action a:hover .icon .fa {
+    transform: none;
+}
+aside ul .action a:hover .icon .fa:last-child {
+    transform: none;
+}
+
+aside ul .action a .name span {
+    color: #188aff;
+}
+aside ul .action a:hover .name span {
+    transform: none;
+}
+aside ul .action a:hover .name span::before {
+    transform: none;
+}
+aside ul .action::before {
+    background: #188aff;
+}
+
+.box-note.trash .menus-trash {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.box-note.trash .menus-trash #trash-up, 
+.box-note.trash .menus-trash #trash-del {
+    font-size: 22px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.box-note.trash .menus-trash #trash-up:hover {
+    color: #188aff;
+}
+.box-note.trash .menus-trash #trash-del:hover {
+    color: red;
+}
+
+.keep--area {
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.keep--newAreaNote {
+    width: 450px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: inherit;
+    box-shadow: 2px 2px 2px 1px grey;
+    transition: 0.5s;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.keep--form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.keep--form input {
+    border: none;
+    height: 30px;
+    outline: none;
+    font-size: 19px;
+    margin-bottom: 5px;
+    padding: 0 10px;
+    padding-top: 10px;
+}
+.keep--form textarea {
+    border: none;
+    min-height: 70px;
+    max-height: 70px;
+    outline: 0;
+    font-size: 15px;
+    display: none;
+    margin: 5px 10px;
+}
+.keep--menus {
+    justify-content: flex-end;
+    display: none;
+    margin: 10px 10px;
+}
+.keep--menus .btns {
+    margin: 0 5px;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: none;
+    background-color: inherit; 
+}
+
+.keep--menus .menu-save:hover {
+    background-color: #188aff;
+    color: #fff;
+}
+
+.keep--newAreaNote.active .keep--form textarea {
+    display: block;
+}
+.keep--newAreaNote.active .keep--form .keep--menus {
+    display: flex;
+}
+.keep--newAreaNote.active {
+    height: 175px;
+    border: 3px solid #188aff;
+}
+.keep--newAreaNote .keep--flash {
+    padding-top: 3px;
+    padding-left: 6px;
+    transition: 0.3s;
+    color: red;
+    display: none;
+}
+.keep--newAreaNote.flash {
+    border: 3px solid red;
+}
+
+.flash-search {
+    display: flex;
+    width: 100%;
+    align-items:  flex-start;
+    margin: 20px 0;
+    font-size: 23px;
+}
+
+
+section {
+    width: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px
+}
+.section-trash,
+.section-mark {
+    margin-top: 30px;
+}
+.box-note {
+    height: 165px;
+    box-shadow: 2px 2px 2px 1px grey;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.box-note:hover {
+    border: 3px solid #188aff;
+    bottom: 1px;
+}
+.box-note h3 {
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.box-note .box-note-txt {
+    width: 100%;
+    height: 80px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #6b6b6b;
+    height: 100px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.box-note .marcadores {
+    height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    font-size: 12px;
+    flex:1;
+    position: absolute;
+    bottom: 3px;
+    left: 10px;
+}
+.box-note .marcadores .marcador {
+    margin-bottom: 3px;
+    margin-right: 3px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 5px;
+    height: 20px;
+    padding: 0 5px;
+}
+
+
+.modal-container-opacity {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: #000;
+    opacity: 0.3;
+    display: none;
+}
+.modal-box-note {
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 20px 20px;
+    width: 500px;
+    height: 350px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+.modal-box-note.active {
+    top: 50%;
+}
+.modal-container-opacity.active {
+    display: block;
+}
+.modal-box-note form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.modal-box-note form input {
+    border: none;
+    height: 40px;
+    margin-bottom: 10px;
+    outline: 0;
+    font-size: 22px;
+}
+.modal-box-note form textarea {
+    border: none;
+    max-height: 180px;
+    min-height: 180px;
+    margin-bottom: 10px;
+    outline: 0;
+    font-size: 18px;
+    color: #6b6b6b;
+}
+.modal-box-note form .modal-menus {
+    display: flex;
+    justify-content: flex-end;
+}
+.modal-box-note form .modal-menus a {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+}
+.modal-box-note form .modal-menus a:first-child:hover {
+    background-color: #188aff;
+    color: #fff;
+}
+.modal-box-note form .modal-menus a:nth-child(3) {
+    position: absolute;
+    left: 5px;
+}
+.modal-box-note form .modal-menus a:nth-child(3):hover {
+    background-color: red;
+    color: #fff;
+}
+.select-marks {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.select-marks i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+.select-marks select {
+    padding: 5px 5px;
+    width: 120px;
+    outline: 0;
+    font-size: 14px;
+}
+
+
+.modal-box-mark {
+    position: fixed;
+    top: 50%;
+    left: -50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 20px 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.6s;
+}
+.modal-box-mark form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.modal-box-mark form input {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    padding: 5px;
+    font-size: 17px;
+    width: 200px;
+}
+.modal-box-mark form i {
+    font-size: 23px;
+    cursor: pointer;
+}
+.modal-box-mark form i:hover {
+    color: #188aff;
+}
+.modal-box-mark .container-marks {
+    display: flex;
+    flex-direction: column;
+}
+.container-marks .mark {
+    width: 100%;
+    display: flex;
+    margin-bottom: 12px;
+}
+.container-marks .mark p {
+    width: 200px;
+    padding-left: 5px;
+}
+.container-marks .mark i {
+    font-size: 23px;
+    cursor: pointer;
+}
+.container-marks .mark i:hover {
+    color: red;
+}
+.modal-btn-close {
+    display: flex;
+    justify-content: flex-end;
+}
+.modal-btn-close a {
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+
+
+.modal-box-mark.active {
+    transition: 0.5s;
+    left: 50%;
+}
+
+.links-pages {
+    margin-top: 15px;
+    display: flex;
+}
+.links-pages .button-pages-hover,
+.links-pages .button-pages {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #333;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    color: #333;
+}
+.links-pages .button-pages-hover {
+    color: #fff;
+    background-color: #188aff;
+}
+.links-pages .button-pages:hover {
+    color: #fff;
+    background-color: #188aff;
+}
+
+
+
+@media(max-width: 880px) {
+    section {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .keep--newAreaNote {
+        width: 300px;
+    }
+    #btn-aside {
+        display: block;
+    }
+    aside label #btn-aside-close {
+        display: block;
+    }
+    .container input[id="chec"]:checked ~ aside {
+        left: 0;
+    }
+    aside {
+        width: 260px;
+        position: absolute;
+        background-color: #fff;
+        z-index: 3;
+        left: -260px;
+        transition: 0.5s;
+    }
+    
+    header .logo {
+        width: 250px;
+    }
+    header .input-search {
+        width: 300px;
+    }
+}
+@media(max-width: 580px) {
+    header .logo {
+        width: 200px;
+    }
+    section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .keep--newAreaNote {
+        width: 220px;
+    }
+}
+@media(max-width: 375px) {
+    section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
