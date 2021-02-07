@@ -5,6 +5,7 @@ $base = '/devskeep';
 //Paginação
 $offset = 0;
 $limit = 16;
+$paginaAtual = 1;
 
 $db_name = 'devskeep';
 $db_host = 'localhost';

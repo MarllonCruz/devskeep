@@ -170,14 +170,17 @@ class NoteDaoMysql implements NoteDAO {
 
     public function getCountNotes($id_mark = null) {
         
-        $sql = 'SELECT count(*) as c FROM notes ';
+        $sql = 'SELECT count(*) as c FROM notes WHERE status_trash = :trash';
+
         if($id_mark && empty($id_mark)) {
-            $sql .= 'WHERE id_mark = :id_mark';
+            $sql .= 'AND id_mark = :id_mark';
             $sql = $this->pdo->prepare($sql);
             $sql->bindValue(':id_mark', $id_mark);
         } else {
             $sql = $this->pdo->prepare($sql);
         }
+        
+        $sql->bindValue(':trash', 0);
         $sql->execute();
 
         if($sql->rowCount() > 0) {
@@ -193,8 +196,8 @@ class NoteDaoMysql implements NoteDAO {
         $sql = $this->pdo->prepare('SELECT count(*) as c FROM notes 
         WHERE status_trash = :trash AND title LIKE :filter 
         OR status_trash = :trash AND txt LIKE :filter');
-        $sql->bindValue(':filter', '%'.$filter.'%');
         $sql->bindValue(':trash', 0);
+        $sql->bindValue(':filter', '%'.$filter.'%');
         $sql->execute();
 
         if($sql->rowCount() > 0) {

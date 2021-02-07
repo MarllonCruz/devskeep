@@ -12,7 +12,6 @@ $action = 'home';
 if(isset($_GET['search']) && !empty($_GET['search'])) {
     $total = $noteDao->getCountNotesBySearch($_GET['search']);
     $paginas = ceil($total/$limit);
-    $paginaAtual = 1;
     if(!empty($_GET['p']) && is_numeric($_GET['p'])) {
         $paginaAtual = intval($_GET['p']);
     }
@@ -25,10 +24,9 @@ if(isset($_GET['search']) && !empty($_GET['search'])) {
         $flash = 'Nenhum resultado da busca :'.$_GET['search'];
     }
 } else {
-
     $total = $noteDao->getCountNotes();
     $paginas = ceil($total/$limit);
-    $paginaAtual = 1;
+
     if(!empty($_GET['p']) && is_numeric($_GET['p'])) {
         $paginaAtual = intval($_GET['p']);
     }
@@ -36,6 +34,7 @@ if(isset($_GET['search']) && !empty($_GET['search'])) {
 
     $notes = $noteDao->getNoteAll($offset, $limit);
 }
+
 
 $marks = $markDao->getMarkAll();
 
@@ -45,6 +44,7 @@ require_once 'partials/menu-aside.php';
 ?>
 
 <div class="keep--area">
+    <!--area de criar nova nota-->
     <div class="keep--newAreaNote">
         <form class="keep--form" method="GET">
             <div class="keep--flash">Preenche os campos!</div>
@@ -63,7 +63,7 @@ require_once 'partials/menu-aside.php';
             <?=$flash;?>
         </div>
     <?php endif; ?>
-
+    <!--notas -->
     <section>
         <?php if(!empty($notes)): ?>
             <?php foreach($notes as $item): ?>
@@ -81,7 +81,7 @@ require_once 'partials/menu-aside.php';
             <?php endforeach;?>
         <?php endif; ?>   
     </section>
-            
+    <!--links pages -->    
     <div class="links-pages">
         <?php for($q=1;$q<=$paginas;$q++): ?>
             <?php if($paginaAtual == $q): ?>
